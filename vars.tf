@@ -14,15 +14,15 @@ variable "instance_type" {
 }
 
 variable "ssh_key_name" {
-    default = "maha-aws-ap-southeast-2"
+  default = "maha-aws-ap-southeast-2"
 }
 
 variable "owner" {
-    default = "maha"
+  default = "maha"
 }
 
-variable "instance_name" {
-    default = "maha-ptfe-demo"
+variable "resource_prefix_name" {
+  default = "maha-ptfe"
 }
 
 variable "ebs_volume_size" {
@@ -32,4 +32,3 @@ variable "ebs_volume_size" {
 variable "ebs_volume_type" {
   default = "gp2"
 }
-

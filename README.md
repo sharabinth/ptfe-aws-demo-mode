@@ -1,4 +1,4 @@
-# AWS EC2 Provision Using Terraform to Install pTFE in Demo Mode
+# Provision AWS EC2 Ubuntu instance Using Terraform to Install pTFE in Demo Mode
 Simple terraform configuration to setup AWS EC2 Ubuntu instance to install Private Terraform running in the DEMO mode.
 
 # Usage

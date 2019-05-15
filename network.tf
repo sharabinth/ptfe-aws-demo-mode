@@ -20,7 +20,10 @@ resource "aws_vpc" "vpc" {
 
 # Create primary subnet within VPC and using the first available zone
 resource "aws_subnet" "subnet" {
-  cidr_block        = "${cidrsubnet(aws_vpc.vpc.cidr_block, 3, 1)}"
+  #cidr_block        = "${cidrsubnet(aws_vpc.vpc.cidr_block, 3, 1)}"
+  # instead of using the complex function, use the cidr block within the vpc cidr block
+  cidr_block = "10.0.10.0/24"
+
   vpc_id            = "${aws_vpc.vpc.id}"
   availability_zone = "${data.aws_availability_zones.available.names[0]}"
 

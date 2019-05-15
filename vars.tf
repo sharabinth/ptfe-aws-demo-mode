@@ -9,12 +9,11 @@ variable "amis" {
 }
 
 variable "instance_type" {
-  #default = "m5.large"
-  default = "t2.micro"
+  default = "m5.large"
 }
 
 variable "ssh_key_name" {
-  default = "maha-aws-ap-southeast-2"
+  default = "msb-ap-se-2"
 }
 
 variable "owner" {

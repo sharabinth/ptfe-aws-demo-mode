@@ -1,6 +1,12 @@
+# Define the AWS provider
 provider "aws" {
   # Use AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY environment variables
   region = "${var.aws_region}"
+}
+
+# define Route53 data source to retrieve the zone id
+data "aws_route53_zone" "route53_zone" {
+  name = "hashicorp-success.com."
 }
 
 # Create the EC2 instance to install pTFE
@@ -31,4 +37,13 @@ resource "aws_instance" "ptfe-demo" {
 # Create elastic IP and attach it to the EC2 instance
 resource "aws_eip" "ptfe-demo" {
   instance = "${aws_instance.ptfe-demo.id}"
+}
+
+# Define the Route53 entry for the pTFE FQDN
+resource "aws_route53_record" "route53_entry" {
+  zone_id = "${data.aws_route53_zone.route53_zone.zone_id}"
+  name    = "${var.resource_prefix_name}.hashicorp-success.com."
+  type    = "A"
+  ttl     = "300"
+  records = ["${aws_eip.ptfe-demo.public_ip}"]
 }
